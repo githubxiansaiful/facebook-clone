@@ -5,7 +5,11 @@ export const metadata: Metadata = {
   title: "Facebook - Connect and share with the people in your life",
   description: "A modern, full-featured Facebook-style social media platform built with Next.js App Router, React 19, TypeScript, Tailwind CSS, and Prisma.",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico" },
+    ],
   },
 };
 

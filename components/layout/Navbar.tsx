@@ -20,6 +20,8 @@ import { MessengerDropdown } from "./MessengerDropdown";
 import { UserMenuDropdown } from "./UserMenuDropdown";
 import { NotificationItemType, ConversationItemType } from "../../types";
 
+import { FacebookLogo } from "../ui/FacebookLogo";
+
 interface NavbarProps {
   currentUser: {
     id: string;
@@ -77,9 +79,10 @@ export function Navbar({
       <div className="flex items-center gap-2 lg:w-1/4">
         <Link
           href="/"
-          className="w-10 h-10 rounded-full bg-[#1877F2] text-white flex items-center justify-center font-black text-2xl tracking-tighter hover:opacity-95 transition-transform active:scale-95 shrink-0 shadow-xs"
+          className="hover:opacity-95 transition-transform active:scale-95 shrink-0"
+          title="Facebook Home"
         >
-          f
+          <FacebookLogo size={40} />
         </Link>
         <SearchDropdown />
       </div>

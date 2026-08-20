@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { loginAction, demoLoginAction } from "../../../lib/actions/auth";
 import { Sparkles, UserCheck, ShieldCheck } from "lucide-react";
+import { FacebookLogo } from "../../../components/ui/FacebookLogo";
 
 export default function LoginPage() {
   const [error, setError] = useState<string | null>(null);
@@ -48,9 +49,12 @@ export default function LoginPage() {
       <div className="max-w-5xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         {/* Left Facebook Brand Promo */}
         <div className="text-center lg:text-left space-y-4 max-w-md mx-auto lg:mx-0">
-          <h1 className="text-5xl sm:text-6xl font-black text-[#1877F2] tracking-tighter">
-            facebook
-          </h1>
+          <div className="flex items-center justify-center lg:justify-start gap-3">
+            <FacebookLogo size={48} />
+            <h1 className="text-5xl sm:text-6xl font-black text-[#1877F2] tracking-tighter">
+              facebook
+            </h1>
+          </div>
           <p className="text-xl sm:text-2xl font-medium text-zinc-800 dark:text-zinc-200 leading-snug">
             Connect with friends and the world around you on Facebook.
           </p>

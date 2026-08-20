@@ -5,6 +5,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { registerAction } from "../../../lib/actions/auth";
 
+import { FacebookLogo } from "../../../components/ui/FacebookLogo";
+
 export default function RegisterPage() {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -29,7 +31,8 @@ export default function RegisterPage() {
 
   return (
     <div className="min-h-screen bg-[#f0f2f5] dark:bg-[#18191a] flex flex-col items-center justify-center p-4 select-none">
-      <div className="mb-6 text-center">
+      <div className="mb-6 flex items-center justify-center gap-2.5">
+        <FacebookLogo size={44} />
         <h1 className="text-4xl sm:text-5xl font-black text-[#1877F2] tracking-tighter">
           facebook
         </h1>
