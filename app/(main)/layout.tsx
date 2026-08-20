@@ -49,7 +49,7 @@ export default async function MainLayout({
       />
 
       {/* Main Responsive 3-Column Shell */}
-      <div className="flex-1 flex justify-between max-w-[1920px] w-full mx-auto pb-14 md:pb-0">
+      <div className="flex-1 flex justify-between max-w-[1445px] w-full mx-auto pb-14 md:pb-0">
         {/* Left Sidebar */}
         <LeftSidebar
           currentUser={currentUser}

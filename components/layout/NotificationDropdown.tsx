@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Bell, Check, Heart, MessageCircle, UserPlus, Sparkles } from "lucide-react";
+import { Check, Heart, MessageCircle, UserPlus, Sparkles } from "lucide-react";
+import { FbBellIcon } from "../ui/FacebookIcons";
 import Link from "next/link";
 import { UserAvatar } from "../ui/UserAvatar";
 import { formatFbTime } from "../../lib/utils";
@@ -93,10 +94,10 @@ export function NotificationDropdown({
     <div ref={dropdownRef} className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative w-10 h-10 rounded-full bg-zinc-100 dark:bg-[#3a3b3c] hover:bg-zinc-200 dark:hover:bg-[#4e4f50] flex items-center justify-center text-zinc-700 dark:text-zinc-200 transition-colors"
+        className="relative w-10 h-10 rounded-full bg-zinc-200/80 dark:bg-[#3a3b3c] hover:bg-zinc-300 dark:hover:bg-[#4e4f50] flex items-center justify-center text-zinc-800 dark:text-zinc-200 transition-colors"
         aria-label="Notifications"
       >
-        <Bell className="w-5 h-5" />
+        <FbBellIcon size={20} />
         {unreadCount > 0 && (
           <span className="absolute -top-1 -right-1 min-w-[19px] h-[19px] px-1 bg-[#e41e3f] text-white text-[11px] font-bold rounded-full flex items-center justify-center border-2 border-white dark:border-[#18191a]">
             {unreadCount > 9 ? "9+" : unreadCount}

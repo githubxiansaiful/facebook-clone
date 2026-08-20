@@ -2,21 +2,9 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import {
-  Users,
-  UsersRound,
-  Bookmark,
-  Clock,
-  Calendar,
-  Tv,
-  Store,
-  ChevronDown,
-  ChevronUp,
-  Flag,
-  Gamepad2,
-  HeartHandshake,
-} from "lucide-react";
+import { ChevronDown, ChevronUp, Calendar, Store, Flag, Gamepad2, HeartHandshake } from "lucide-react";
 import { UserAvatar } from "../ui/UserAvatar";
+import { FB_SIDEBAR_ICONS } from "../ui/FacebookIcons";
 
 interface LeftSidebarProps {
   currentUser: {
@@ -43,42 +31,42 @@ export function LeftSidebar({
     {
       label: "Friends",
       href: "/friends",
-      icon: Users,
-      iconColor: "text-[#1877F2]",
+      imgSrc: FB_SIDEBAR_ICONS.friends,
       badge: pendingRequestsCount > 0 ? `${pendingRequestsCount} new` : undefined,
+    },
+    {
+      label: "Feeds",
+      href: "/",
+      imgSrc: FB_SIDEBAR_ICONS.feeds,
     },
     {
       label: "Groups",
       href: "/groups",
-      icon: UsersRound,
-      iconColor: "text-blue-500",
+      imgSrc: FB_SIDEBAR_ICONS.groups,
     },
     {
       label: "Saved",
       href: "/saved",
-      icon: Bookmark,
-      iconColor: "text-purple-500",
+      imgSrc: FB_SIDEBAR_ICONS.saved,
     },
     {
       label: "Memories",
       href: "/#memories",
-      icon: Clock,
-      iconColor: "text-cyan-500",
+      imgSrc: FB_SIDEBAR_ICONS.memories,
     },
     {
-      label: "Events",
-      href: "/#events",
-      icon: Calendar,
-      iconColor: "text-rose-500",
+      label: "Video",
+      href: "/#video",
+      imgSrc: FB_SIDEBAR_ICONS.video,
     },
   ];
 
   const moreItems = [
     {
-      label: "Video",
-      href: "/#video",
-      icon: Tv,
-      iconColor: "text-blue-400",
+      label: "Events",
+      href: "/#events",
+      icon: Calendar,
+      iconColor: "text-rose-500",
     },
     {
       label: "Marketplace",
@@ -113,14 +101,17 @@ export function LeftSidebar({
           <Link
             key={item.label}
             href={item.href}
-            className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-[#3a3b3c] transition-colors group text-zinc-900 dark:text-zinc-100 font-semibold text-sm"
+            className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-[#3a3b3c] transition-colors group text-zinc-900 dark:text-zinc-100 font-semibold text-sm"
           >
             {item.avatar !== undefined ? (
               <UserAvatar src={item.avatar} name={item.label} size="sm" />
-            ) : item.icon ? (
-              <div className="w-8 h-8 rounded-full flex items-center justify-center bg-zinc-100 dark:bg-[#3a3b3c] group-hover:bg-zinc-200 dark:group-hover:bg-[#4e4f50] transition-colors">
-                <item.icon className={`w-5 h-5 ${item.iconColor || "text-zinc-600 dark:text-zinc-300"}`} />
-              </div>
+            ) : item.imgSrc ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={item.imgSrc}
+                alt={item.label}
+                className="w-9 h-9 object-contain shrink-0"
+              />
             ) : null}
 
             <span className="flex-1 truncate">{item.label}</span>
@@ -138,9 +129,9 @@ export function LeftSidebar({
             <Link
               key={item.label}
               href={item.href}
-              className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-[#3a3b3c] transition-colors group text-zinc-900 dark:text-zinc-100 font-semibold text-sm animate-in fade-in duration-200"
+              className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-[#3a3b3c] transition-colors group text-zinc-900 dark:text-zinc-100 font-semibold text-sm animate-in fade-in duration-200"
             >
-              <div className="w-8 h-8 rounded-full flex items-center justify-center bg-zinc-100 dark:bg-[#3a3b3c] group-hover:bg-zinc-200 dark:group-hover:bg-[#4e4f50] transition-colors">
+              <div className="w-9 h-9 rounded-full flex items-center justify-center bg-zinc-100 dark:bg-[#3a3b3c] group-hover:bg-zinc-200 dark:group-hover:bg-[#4e4f50] transition-colors">
                 <item.icon className={`w-5 h-5 ${item.iconColor || "text-zinc-600 dark:text-zinc-300"}`} />
               </div>
               <span className="flex-1 truncate">{item.label}</span>
@@ -150,9 +141,9 @@ export function LeftSidebar({
         {/* See More Toggle */}
         <button
           onClick={() => setShowMore(!showMore)}
-          className="flex items-center gap-3 w-full px-3 py-2.5 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-[#3a3b3c] transition-colors text-zinc-800 dark:text-zinc-200 font-semibold text-sm"
+          className="flex items-center gap-3 w-full px-3 py-2 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-[#3a3b3c] transition-colors text-zinc-800 dark:text-zinc-200 font-semibold text-sm"
         >
-          <div className="w-8 h-8 rounded-full bg-zinc-200 dark:bg-[#3a3b3c] flex items-center justify-center">
+          <div className="w-9 h-9 rounded-full bg-zinc-200 dark:bg-[#3a3b3c] flex items-center justify-center">
             {showMore ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
           </div>
           <span>{showMore ? "See less" : "See more"}</span>
@@ -168,19 +159,19 @@ export function LeftSidebar({
         </h4>
         <div className="space-y-1">
           <Link
-            href="/groups/nextjs-developers"
+            href="/groups"
             className="flex items-center gap-3 py-2 px-2 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-[#3a3b3c] transition-colors text-xs font-semibold text-zinc-800 dark:text-zinc-200"
           >
-            <div className="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-xs">
+            <div className="w-9 h-9 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-sm shrink-0">
               ⚡
             </div>
             <span className="truncate">React & Next.js Developers</span>
           </Link>
           <Link
-            href="/groups/photography-club"
+            href="/groups"
             className="flex items-center gap-3 py-2 px-2 rounded-lg hover:bg-zinc-200/60 dark:hover:bg-[#3a3b3c] transition-colors text-xs font-semibold text-zinc-800 dark:text-zinc-200"
           >
-            <div className="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-xs">
+            <div className="w-9 h-9 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-sm shrink-0">
               📸
             </div>
             <span className="truncate">Landscape & Street Photography</span>

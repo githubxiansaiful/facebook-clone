@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { MessageCircle, ExternalLink, Edit } from "lucide-react";
+import { ExternalLink, Edit } from "lucide-react";
+import { FbMessengerIcon } from "../ui/FacebookIcons";
 import Link from "next/link";
 import { UserAvatar } from "../ui/UserAvatar";
 import { formatFbTime } from "../../lib/utils";
@@ -33,10 +34,10 @@ export function MessengerDropdown({
     <div ref={dropdownRef} className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative w-10 h-10 rounded-full bg-zinc-100 dark:bg-[#3a3b3c] hover:bg-zinc-200 dark:hover:bg-[#4e4f50] flex items-center justify-center text-zinc-700 dark:text-zinc-200 transition-colors"
+        className="relative w-10 h-10 rounded-full bg-zinc-200/80 dark:bg-[#3a3b3c] hover:bg-zinc-300 dark:hover:bg-[#4e4f50] flex items-center justify-center text-zinc-800 dark:text-zinc-200 transition-colors"
         aria-label="Messenger"
       >
-        <MessageCircle className="w-5 h-5" />
+        <FbMessengerIcon size={20} />
       </button>
 
       {isOpen && (

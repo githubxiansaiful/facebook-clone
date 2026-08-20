@@ -6,6 +6,7 @@ import { UserAvatar } from "../ui/UserAvatar";
 import { Modal } from "../ui/Modal";
 import { createStoryAction } from "../../lib/actions/stories";
 import { StoryItemType } from "../../types";
+import { FbPlusIcon } from "../ui/FacebookIcons";
 
 interface StoriesRailProps {
   stories: StoryItemType[];
@@ -66,16 +67,15 @@ export function StoriesRail({ stories, currentUser }: StoriesRailProps) {
 
   const handleCreateStory = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (storyType === "TEXT" && !textContent.trim()) return;
-    if (storyType === "IMAGE" && !mediaUrl.trim()) return;
-
     setIsSubmitting(true);
+
     await createStoryAction({
       mediaType: storyType,
-      textContent: textContent.trim() || null,
-      mediaUrl: mediaUrl.trim() || null,
-      bgGradient,
+      mediaUrl: storyType === "IMAGE" ? mediaUrl : null,
+      textContent: storyType === "TEXT" ? textContent : null,
+      bgGradient: storyType === "TEXT" ? bgGradient : null,
     });
+
     setIsSubmitting(false);
     setIsCreateOpen(false);
     setTextContent("");
@@ -106,7 +106,7 @@ export function StoriesRail({ stories, currentUser }: StoriesRailProps) {
           </div>
           <div className="relative flex-1 flex flex-col items-center justify-end pb-2 pt-3 px-1 text-center bg-white dark:bg-[#242526]">
             <div className="absolute -top-4 w-8 h-8 rounded-full bg-[#1877F2] text-white flex items-center justify-center border-4 border-white dark:border-[#242526] shadow-sm group-hover:scale-110 transition-transform">
-              <Plus className="w-5 h-5" />
+              <FbPlusIcon size={16} fill="white" />
             </div>
             <span className="text-xs font-bold text-zinc-900 dark:text-zinc-100">
               Create story

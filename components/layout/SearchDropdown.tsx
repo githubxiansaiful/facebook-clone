@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Search, X, User, Users, Hash } from "lucide-react";
+import { X, User, Users, Hash } from "lucide-react";
+import { FbSearchIcon } from "../ui/FacebookIcons";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { UserAvatar } from "../ui/UserAvatar";
@@ -62,8 +63,8 @@ export function SearchDropdown() {
   return (
     <div ref={containerRef} className="relative flex-1 max-w-[280px] sm:max-w-[320px]">
       <form onSubmit={handleSubmit} className="relative flex items-center">
-        <div className="absolute left-3 text-zinc-400 pointer-events-none">
-          <Search className="w-4 h-4" />
+        <div className="absolute left-3 text-zinc-500 dark:text-zinc-400 pointer-events-none">
+          <FbSearchIcon size={16} />
         </div>
         <input
           type="text"
@@ -158,7 +159,7 @@ export function SearchDropdown() {
                   onClick={() => setIsOpen(false)}
                   className="flex items-center justify-center gap-2 w-full mt-1 py-2 text-xs font-semibold text-[#1877F2] hover:bg-blue-50 dark:hover:bg-blue-950/30 rounded-lg transition-colors"
                 >
-                  <Search className="w-3.5 h-3.5" />
+                  <FbSearchIcon size={14} />
                   Search all results for &quot;{query}&quot;
                 </Link>
               </>
