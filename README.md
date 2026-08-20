@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Facebook-Style Social Media Platform (Next.js 16 + React 19)
 
-## Getting Started
+A full-stack, production-style **Facebook Clone** built with **Next.js App Router**, **React 19**, **TypeScript**, **Tailwind CSS**, **Prisma ORM**, and **JWT Authentication**.
 
-First, run the development server:
+---
 
+## ✨ Features Overview
+
+### 1. 📱 15 Full Pages
+1. **Login** (`/login`) - Clean Facebook-style login with instant 1-click demo login buttons.
+2. **Register** (`/register`) - Account registration with validation.
+3. **Forgot Password** (`/forgot-password`) - Account recovery workflow.
+4. **Home / News Feed** (`/`) - Stories, post composer, multi-image posts, reactions, comments with nested replies.
+5. **Profile** (`/profile/[username]`) - Cover photo, avatar, bio, timeline posts, about details, friends list, and photos gallery.
+6. **Friends Hub** (`/friends`) - Friend requests preview, friend suggestions ("People You May Know"), all friends manager.
+7. **Friend Requests** (`/friends/requests`) - Dedicated friend request management with confirm/decline.
+8. **Search Results** (`/search?q=...`) - Unified multi-entity search across people, groups, and posts.
+9. **Notifications** (`/notifications`) - Real-time alerts for likes, comments, replies, and friend requests.
+10. **Messenger** (`/messages`) - Chat list sidebar and messaging hub.
+11. **Direct Conversation** (`/messages/[conversationId]`) - Full chat thread with timestamps and quick like sticker.
+12. **Groups Hub** (`/groups`) - Discover new groups and browse joined groups.
+13. **Group Details** (`/groups/[groupId]`) - Group cover, member roster, join/leave toggle, and group-specific post feed.
+14. **Saved Posts** (`/saved`) - Personal bookmarks collection with unsave and view links.
+15. **Settings** (`/settings`) - Profile editor, dark mode / theme preferences, and account info.
+
+---
+
+### 2. 🖥️ Layout & Navigation
+- **Top Header**:
+  - Live debounce search bar with dropdown preview
+  - Responsive center tabs (Home, Friends, Groups, Saved) with badges
+  - Messenger popup dropdown
+  - Notifications popup dropdown with unread count
+  - User profile menu with 1-click demo user switcher, theme toggle, and logout
+- **Three-Column Desktop Layout**:
+  - **Left Sidebar**: Profile shortcut, navigation links, shortcuts, and "See more" accordion.
+  - **Center Feed**: 24h stories carousel, composer card, feed filter tabs, posts stream.
+  - **Right Sidebar**: Sponsored card, birthdays reminder, active contacts list with green online indicators.
+- **Floating Chat Widget**: Clicking any contact in the right sidebar opens a floating Messenger popup in the bottom right!
+- **Mobile Navigation**: Sticky bottom navigation bar and mobile-responsive layouts.
+
+---
+
+### 3. 💬 Feed & Interactions
+- **Post Composer Modal**:
+  - Multi-image attachments & previews
+  - Feeling & activity selector (😊 happy, 🍕 eating, ✈️ traveling, ☕ coffee, etc.)
+  - Location tagger placeholder
+  - Colored background themes for short status updates (Sunset, Ocean, Electric Purple, Emerald, Midnight)
+  - Audience privacy selector (🌐 Public, 👥 Friends, 🔒 Only Me)
+- **7 Animated Reactions**: 👍 Like, ❤️ Love, 🥰 Care, 😆 Haha, 😮 Wow, 😢 Sad, 😡 Angry with hover popup and optimistic UI updates.
+- **Comments System**: Nested replies, comment liking, comment deletion, and optimistic updates.
+- **24-Hour Stories**: Text and photo stories with full-screen viewer and auto-advancing progress timers.
+
+---
+
+## 🚀 Quick Start
+
+### 1. Install Dependencies
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Initialize Database & Seed
+```bash
+npx prisma db push
+npm run seed
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Start Development Server
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 👥 Demo Accounts (Password: `password123`)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Name | Username | Email |
+| :--- | :--- | :--- |
+| **Mark Zuckerberg** | `mark` | `mark@facebook.com` |
+| **Sarah Jenkins** | `sarahj` | `sarah@example.com` |
+| **Alex Rivera** | `alexr` | `alex@example.com` |
+| **Emily Watson** | `emilyw` | `emily@example.com` |
+| **Michael Chen** | `mchen` | `michael@example.com` |
+| **Jessica Taylor** | `jessicat` | `jessica@example.com` |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+*(You can also use the 1-click instant login buttons on the login page or switch accounts at any time from the top-right profile menu!)*
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🛠️ Tech Stack & Architecture
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Framework**: Next.js 16 (App Router, Server Components, Server Actions)
+- **Library**: React 19
+- **Database & ORM**: SQLite + Prisma ORM
+- **Styling**: Tailwind CSS v4 + Custom Dark Mode Variables
+- **Icons**: Lucide React
+- **Validation**: Zod
+- **Auth**: JWT Session Cookies (`jose`) + `bcryptjs`
+- **Dates**: `date-fns` with custom Facebook-style relative time formatting
