@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import { cn, getAvatarFallback } from "../../lib/utils";
 
 interface UserAvatarProps {
@@ -34,26 +36,24 @@ export function UserAvatar({
   isOnline = false,
   className,
 }: UserAvatarProps) {
+  const [imgError, setImgError] = useState(false);
   const fallback = getAvatarFallback(name || "User");
 
   return (
-    <div className={cn("relative inline-block shrink-0", className)}>
+    <div className={cn("relative inline-block shrink-0 select-none", className)}>
       <div
         className={cn(
           "rounded-full overflow-hidden flex items-center justify-center font-semibold bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-sm ring-1 ring-black/5 dark:ring-white/10",
           sizeClasses[size]
         )}
       >
-        {src ? (
+        {src && !imgError ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={src}
             alt={name || "User Avatar"}
             className="w-full h-full object-cover"
-            onError={(e) => {
-              // fallback if broken image
-              e.currentTarget.style.display = "none";
-            }}
+            onError={() => setImgError(true)}
           />
         ) : (
           <span>{fallback}</span>
